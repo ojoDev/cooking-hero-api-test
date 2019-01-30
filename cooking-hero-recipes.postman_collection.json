@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "2ee1a76c-93c4-4bc9-aaeb-23f1d2c053b0",
+		"name": "CookingHero-recipes",
+		"description": "Cooking Hero calls\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/recipes",
+			"item": [
+				{
+					"name": "/recipes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4cb9e490-8b83-4d33-947b-c341ab173a54",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var schema = {",
+									"  \"items\": {",
+									"    \"type\": \"boolean\"",
+									"  }",
+									"};",
+									"",
+									"var data1 = [true, false];",
+									"var data2 = [true, 123];",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.expect(tv4.validate(data1, schema)).to.be.true;",
+									"  pm.expect(tv4.validate(data2, schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}/recipes?name=potatoe&userId=324399845004&fields=name,description,cousine-type,preparation-time,cooking-time&skip=10&limit=20",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "potatoe"
+								},
+								{
+									"key": "userId",
+									"value": "324399845004"
+								},
+								{
+									"key": "fields",
+									"value": "name,description,cousine-type,preparation-time,cooking-time"
+								},
+								{
+									"key": "skip",
+									"value": "10"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						},
+						"description": "get all recipes"
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Spanish omelette\",\r\n  \"description\": \"Classic Spanish omelette filled with pan-fried potatoes and onion.\",\r\n   \"cousine-type\": [\r\n    \"spanish\",\r\n    \"veggie\"\r\n  ],\r\n  \"preparation-time\": 15,\r\n  \"cooking-time\": 40,\r\n  \"difficulty\": 4,\r\n  \"photos\": [\r\n    {\r\n      \"id\": 88484351313003,\r\n      \"main\": true\r\n    }\r\n  ],\r\n  \"steps\": [\r\n    {\r\n      \"description\": \"Cut potatoes and onion in small portions.\",\r\n      \"photo\": 3243242335004\r\n    },\r\n    {\r\n      \"description\": \"In a large frying pan or skillet, heat olive oil over medium-high heat.\",\r\n      \"time\": 3\r\n    },\r\n    {\r\n      \"description\": \"Mix eggs in a big plate and, next, drop potatoes and onion in the mixture and mix again.\"\r\n    },\r\n    {\r\n      \"description\": \"Drop mixed eggs, potatoes and onion into the oil and wait.\",\r\n      \"time\": 15\r\n    }\r\n  ],\r\n  \"ingredients\": [\r\n    {\r\n      \"product\": \"potatoes\",\r\n      \"quantity\": 2,\r\n      \"unit\": \"units\"\r\n    },\r\n    {\r\n      \"product\": \"onion\",\r\n      \"quantity\": 1,\r\n      \"unit\": \"units\"\r\n    },\r\n    {\r\n      \"product\": \"eggs\",\r\n      \"quantity\": 4,\r\n      \"unit\": \"units\"\r\n    },\r\n    {\r\n      \"product\": \"oil\"\r\n    },\r\n    {\r\n      \"product\": \"salt\"\r\n    }\r\n  ],\r\n  \"user\": \"ojodev\"\r\n}"
+						},
+						"url": {
+							"raw": "{{api-url}}/recipes",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/recipes/{recipe-id}",
+			"item": [
+				{
+					"name": "/recipes/{recipe-id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}/recipes/5c093c2c49a170203c82e685",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"recipes",
+								"5c093c2c49a170203c82e685"
+							]
+						},
+						"description": "get a recipe"
+					},
+					"response": []
+				},
+				{
+					"name": "/recipes/{recipe-id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-url}}/recipes/5c0adcc049a1703a1ca3552e",
+							"host": [
+								"{{api-url}}"
+							],
+							"path": [
+								"recipes",
+								"5c0adcc049a1703a1ca3552e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cd149ddb-3a03-4258-be04-3f9d75c3e481",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f9d51459-303e-4abe-8303-f58d6bea9179",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
